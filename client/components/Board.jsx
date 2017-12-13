@@ -16,7 +16,7 @@ class Board extends React.Component {
   render () {
     return (
       <div>
-        <h1 className='is-title 1'>heres a board:</h1>
+        <h1 className='title is-1'>heres a board:</h1>
         <div className='boardcontainer'>
           {cells.map(cell => <Cell key={cell.id} cell={cell}/>)}
         </div>
