@@ -12,15 +12,14 @@ class Board extends React.Component {
     // binds go here:
   }
   // functions go here:
-  componentDidMount () {
-    console.log(cells)
-  }
 
   render () {
     return (
       <div>
-        im Board
-        {cells.map(cell => <Cell key={cell.id} cell={cell}/>)}
+        <h1 className='is-title 1'>heres a board:</h1>
+        <div className='boardcontainer'>
+          {cells.map(cell => <Cell key={cell.id} cell={cell}/>)}
+        </div>
       </div>
     )
   }

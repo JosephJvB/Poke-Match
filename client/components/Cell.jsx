@@ -12,7 +12,7 @@ class Cell extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='cell'>
         {this.props.cell.id}
       </div>
     )
