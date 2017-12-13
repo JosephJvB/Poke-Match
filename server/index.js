@@ -3,5 +3,5 @@ const server = require('./server')
 const PORT = process.env.PORT || 3000
 
 server.listen(PORT, () => {
-  console.log('yarr this be the port: ', PORT)
+  console.log('JavaScript infinity opens the door!: ', PORT)
 })
