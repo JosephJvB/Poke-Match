@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Cell from './Cell'
 import { cells } from '../../server/cellData'
@@ -14,15 +15,22 @@ class Board extends React.Component {
   // functions go here:
 
   render () {
+    const boardState = this.props.temp.length < 2 ? 'open' : 'closed'
     return (
-      <div>
+      <div className={boardState}>
         <h1 className='title is-1'>heres a board:</h1>
         <div className='boardcontainer'>
-          {cells.map(cell => <Cell key={cell.id} cell={cell}/>)}
+          {cells.map((cell, i) => <Cell key={i} cell={cell}/>)}
         </div>
       </div>
     )
   }
 }
 
-export default Board
+const mapStateToProps = (state) => {
+  return {
+    temp: state.temp
+  }
+}
+
+export default connect(mapStateToProps)(Board)

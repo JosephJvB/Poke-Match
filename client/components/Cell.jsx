@@ -15,24 +15,24 @@ class Cell extends React.Component {
     this.checkSolved = this.checkSolved.bind(this)
   }
   // functions go here:
-  cellClick (img) {
-    this.props.dispatch(addTempCell(img))
+  cellClick (cell) {
+    this.props.dispatch(addTempCell(cell))
     setTimeout(this.checkTemp, 100)
-    this.checkSolved()
   }
 
   checkTemp () {
     if (this.props.temp.length === 2) {
-      if (this.props.temp[0] === this.props.temp[1]) {
+      if (this.props.temp[0].img === this.props.temp[1].img) {
         console.log('match!')
         this.props.dispatch(solvePair(this.props.temp))
       } else {
         console.log('no match dickhead')
       }
-      this.props.dispatch(clearTemp())
+      setTimeout(() => this.props.dispatch(clearTemp()), 2000)
     } else {
       console.log('choose another cell')
     }
+    setTimeout(this.checkSolved, 100)
   }
 
   checkSolved () {
@@ -42,9 +42,10 @@ class Cell extends React.Component {
   }
 
   render () {
+    const sauce = (this.props.temp.find(c => c === this.props.cell) || this.props.solved.find(set => set.find(c => c === this.props.cell))) ? this.props.cell.img : '/images/pkball.png'
     return (
-      <div className='cell' onClick={this.cellClick}>
-        cell: {this.props.cell.id}
+      <div className='cell' onClick={() => this.cellClick(this.props.cell)}>
+        <img src={sauce} />
       </div>
     )
   }
