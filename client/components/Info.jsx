@@ -17,7 +17,7 @@ class Info extends React.Component {
   }
 
   render () {
-    let asheFace = ''
+    let asheFace = '/images/wPoke.png'
     const count = this.props.count ? this.props.count : 0
     const mans = this.props.solved.length ? this.props.solved.length : 0
     if (this.props.check === 'yup') {
