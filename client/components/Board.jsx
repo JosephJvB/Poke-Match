@@ -17,12 +17,9 @@ class Board extends React.Component {
   render () {
     const boardState = this.props.temp.length < 2 ? 'open' : 'closed'
     return (
-      <section className='section has-text-centered' id={boardState}>
-        <h1 className='title is-1'>heres a board:</h1>
-        <div className='columns' id='boardcontainer'>
-          {cells.map((cell, i) => <Cell key={i} cell={cell}/>)}
-        </div>
-      </section>
+      <div className={boardState} id='boardcontainer'>
+        {cells.map((cell, i) => <Cell key={i} cell={cell}/>)}
+      </div>
     )
   }
 }
