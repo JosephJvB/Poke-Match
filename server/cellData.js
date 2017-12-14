@@ -1,99 +1,51 @@
 module.exports = {
   cells: [{
-    id: 1,
-    img: '/images/ball.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Metapod.png'
   },
   {
-    id: 2,
-    img: '/images/sunglasses.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Jigglypuff.png'
   },
   {
-    id: 3,
-    img: '/images/spade.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Squirtle.png'
   },
   {
-    id: 4,
-    img: '/images/sunhat.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Squirtle.png'
   },
   {
-    id: 5,
-    img: '/images/starfish.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Jigglypuff.png'
   },
   {
-    id: 6,
-    img: '/images/jandals.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Snorlax.png'
   },
   {
-    id: 7,
-    img: '/images/ball.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Arcanine.png'
   },
   {
-    id: 8,
-    img: '/images/jandals.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Snorlax.png'
   },
   {
-    id: 9,
-    img: '/images/sunhat.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Mr_Mime.png'
   },
   {
-    id: 10,
-    img: '/images/spade.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Haunter.png'
   },
   {
-    id: 11,
-    img: '/images/towel.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Pikachu.png'
   },
   {
-    id: 12,
-    img: '/images/towel.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Haunter.png'
   },
   {
-    id: 13,
-    img: '/images/umbrella.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Pikachu.png'
   },
   {
-    id: 14,
-    img: '/images/umbrella.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Mr_Mime.png'
   },
   {
-    id: 15,
-    img: '/images/sunglasses.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Metapod.png'
   },
   {
-    id: 16,
-    img: '/images/starfish.jpg',
-    isTemp: false,
-    isSolved: false
+    img: '/images/Arcanine.png'
   }
   ]
 }

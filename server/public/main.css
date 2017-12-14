@@ -24,3 +24,7 @@ img {
   background-color: gray;
   border: 1px solid black;
 }
+
+.closed {
+  pointer-events: none
+}
