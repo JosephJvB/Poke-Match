@@ -1,13 +1,18 @@
-img {
+.cellImg {
   height: 100px;
   width: 100px;
+}
+
+#niceMargin {
+  padding-top: 50px;
+  margin-right: -150px;
 }
 
 #boardcontainer {
   display: flex;
   flex-wrap: wrap;
   width: 400px;
-  background-color: rgb(219, 255, 219)
+  background-color: rgb(219, 255, 219);
 }
 
 .cell {
@@ -15,6 +20,10 @@ img {
   height: 100px;
 }
 
-#closed {
+.closed {
   pointer-events: none
+}
+
+#info {
+  margin-top: -50px
 }

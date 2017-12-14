@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addTempCell, solvePair, clearTemp } from '../actions'
+import { addTempCell, solvePair, clearTemp, addCount, checkPair } from '../actions'
 
 class Cell extends React.Component {
   constructor (props) {
@@ -20,13 +20,18 @@ class Cell extends React.Component {
   }
 
   checkTemp () {
+    let count = this.props.count ? this.props.count : 0
     if (this.props.temp.length === 2) {
       if (this.props.temp[0].img === this.props.temp[1].img) {
-        console.log('match!')
+        console.log('Match!')
+        this.props.dispatch(checkPair('yup'))
         this.props.dispatch(solvePair(this.props.temp))
       } else {
+        this.props.dispatch(checkPair('nope'))
         console.log('no match')
       }
+      count += 1
+      this.props.dispatch(addCount(count))
       setTimeout(() => this.props.dispatch(clearTemp()), 1500)
     } else {
       console.log('choose another cell')
@@ -45,7 +50,7 @@ class Cell extends React.Component {
     return (
       <div>
         {!foundCell && <div className='cell' onClick={() => this.cellClick(this.props.cell)}>
-          <img src='/images/pkball.png' />
+          <img className ='cellImg' src='/images/pkball.png' />
         </div>}
         {foundCell && <div className='cell' disabled>
           <img src={this.props.cell.img} />
@@ -57,6 +62,7 @@ class Cell extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    count: state.count,
     temp: state.temp,
     solved: state.solved
   }
