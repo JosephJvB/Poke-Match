@@ -1,15 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { reset } from '../actions'
+
 class Info extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-
     }
     // binds go here:
+    this.resetGame = this.resetGame.bind(this)
   }
   // functions go here:
+  resetGame () {
+    this.props.dispatch(reset())
+  }
 
   render () {
     let asheFace = ''
@@ -18,20 +23,24 @@ class Info extends React.Component {
     if (this.props.check === 'yup') {
       asheFace = '/images/happyAsh.jpeg'
     } else if (this.props.check === 'nope') {
-      asheFace = '/images/angyAsh.png'
-    } else {
-      asheFace = '/images/catchem.png'
+      asheFace = '/images/aAsh.jpg'
     }
     return (
-      <section className='section has-text-centered'>
+      <section id='info' className='section has-text-centered'>
+        <img src='/images/catchem.png'/>
+        <div className='card' style={{height: 240, width: 980}}>
+          <img src={asheFace} />
+        </div>
         <div className='card'>
-          <h1 className='subtitle is-1'>Game State:</h1>
+          <h1 className='subtitle is-3'>QUOTE GOES HERE</h1>
+        </div>
+        <div className='card'>
           <ul className='has-text-left'>
             <li>Turn Count: {count}</li>
             <li>Poke-Pairs Caught: {mans} / 8</li>
-            <li><img src={asheFace}/></li>
           </ul>
         </div>
+        <button className='button is-danger is-large' onClick={this.resetGame}>RESET</button>
       </section>
     )
   }

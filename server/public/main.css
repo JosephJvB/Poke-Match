@@ -23,3 +23,7 @@
 .closed {
   pointer-events: none
 }
+
+#info {
+  margin-top: -50px
+}

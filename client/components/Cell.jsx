@@ -50,7 +50,7 @@ class Cell extends React.Component {
     return (
       <div>
         {!foundCell && <div className='cell' onClick={() => this.cellClick(this.props.cell)}>
-          <img clasName ='cellImg' src='/images/pkball.png' />
+          <img className ='cellImg' src='/images/pkball.png' />
         </div>}
         {foundCell && <div className='cell' disabled>
           <img src={this.props.cell.img} />

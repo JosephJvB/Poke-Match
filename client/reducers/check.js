@@ -1,10 +1,10 @@
-import { CHECK_PAIR, CLEAR } from '../actions'
+import { CHECK_PAIR, RESET } from '../actions'
 
 export default function check (state = null, action) {
   switch (action.type) {
     case CHECK_PAIR:
       return action.outcome
-    case CLEAR:
+    case RESET:
       return null
     default:
       return state
