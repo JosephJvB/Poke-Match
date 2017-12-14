@@ -7,7 +7,6 @@ class Cell extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-
     }
     // binds go here:
     this.cellClick = this.cellClick.bind(this)
@@ -42,10 +41,16 @@ class Cell extends React.Component {
   }
 
   render () {
-    const sauce = (this.props.temp.find(c => c === this.props.cell) || this.props.solved.find(set => set.find(c => c === this.props.cell))) ? this.props.cell.img : '/images/pkball.png'
+    const foundCell = (this.props.temp.find(c => c === this.props.cell) || this.props.solved.find(set => set.find(c => c === this.props.cell)))
+    const sauce = foundCell ? this.props.cell.img : '/images/pkball.png'
     return (
-      <div className='cell' onClick={() => this.cellClick(this.props.cell)}>
-        <img src={sauce} />
+      <div>
+        {!foundCell && <div className='cell' onClick={() => this.cellClick(this.props.cell)}>
+          <img src={sauce} />
+        </div>}
+        {foundCell && <div className='cell' disabled>
+          <img src={sauce} />
+        </div>}
       </div>
     )
   }
