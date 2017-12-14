@@ -26,9 +26,9 @@ class Cell extends React.Component {
         console.log('match!')
         this.props.dispatch(solvePair(this.props.temp))
       } else {
-        console.log('no match dickhead')
+        console.log('no match')
       }
-      setTimeout(() => this.props.dispatch(clearTemp()), 2000)
+      setTimeout(() => this.props.dispatch(clearTemp()), 1500)
     } else {
       console.log('choose another cell')
     }

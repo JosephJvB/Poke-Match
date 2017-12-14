@@ -15,14 +15,13 @@ img {
 .boardcontainer {
   display: flex;
   flex-wrap: wrap;
-  width: 408px;
+  width: 400px;
+  background-color: rgb(219, 255, 219)
 }
 
 .cell {
   width: 100px;
   height: 100px;
-  background-color: gray;
-  border: 1px solid black;
 }
 
 .closed {
