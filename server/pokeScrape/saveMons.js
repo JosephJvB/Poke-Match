@@ -3,7 +3,7 @@ const fs = require('fs')
 const { scrape } = require('./scrape')
 const { pokeArr } = require('./pokeArr')
 
-saveMons(0)
+saveMons(150)
 
 function saveMons (idx) {
   fs.readFile(`${__dirname}/pokeLibrary.json`, 'utf8', (err, data) => {
@@ -12,11 +12,13 @@ function saveMons (idx) {
     } else {
       let mons = JSON.parse(data)
       let searchMon = pokeArr[idx]
-      let pokeAlreadyCaught = mons.find(p => p.includes(searchMon))
+      if (!searchMon) return console.log('You are the pokemon master!')
+      let findMon = exists(searchMon)
+      let pokeAlreadyCaught = mons.find(p => p.includes(findMon))
       if (pokeAlreadyCaught) {
-        // console.log(searchMon, ' is already caught!')
         return saveMons(idx + 1)
       }
+      console.log('-------')
       console.log('gonna catch a ', searchMon)
       scrape(searchMon)
         .then(res => {
@@ -25,8 +27,18 @@ function saveMons (idx) {
             if (err) console.log(err)
             else console.log(searchMon, ' was caught!')
           })
-          setTimeout(() => saveMons(idx + 1), 2000)
+          saveMons(idx + 1)
         })
     }
   })
+}
+
+function exists (mon) {
+  switch (mon) {
+    case 'Nidoran♀': return '029Nidoran'
+    case 'Nidoran♂': return '032Nidoran'
+    case 'Farfetch\'d': return '083Farfetch%27d'
+    default:
+      return mon
+  }
 }

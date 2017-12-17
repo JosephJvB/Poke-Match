@@ -5,10 +5,10 @@ export const ADD_COUNT = 'ADD_COUNT'
 export const CHECK_PAIR = 'CHECK_PAIR'
 export const RESET = 'RESET'
 
-export const addTempCell = (img) => {
+export const addTempCell = (img, id) => {
   return {
     type: ADD_CELL,
-    img
+    cell: {img, id}
   }
 }
 
