@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import Cell from './Cell'
 import Info from './Info'
 import pokePics from '../../server/pokeScrape/pokeLibrary.json'
-// import { cells } from '../../server/cellData'
 
 class Board extends React.Component {
   constructor (props) {
@@ -14,6 +13,7 @@ class Board extends React.Component {
     }
     // binds go here:
     this.scrumble = this.scrumble.bind(this)
+    this.spinThat = this.spinThat.bind(this)
   }
   // functions go here:
   componentDidMount () {
@@ -26,10 +26,21 @@ class Board extends React.Component {
     let idx = Math.floor(Math.random() * newPokemon.length)
     scrambleCells.push(newPokemon[idx])
     if (scrambleCells.length === 8) {
-      return this.setState({ cells: scrambleCells })
+      let full = scrambleCells.concat(scrambleCells)
+      return this.setState({ cells: this.spinThat(full) })
     } else {
       this.scrumble(scrambleCells)
     }
+  }
+
+  spinThat (arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1))
+      let temp = arr[i]
+      arr[i] = arr[j]
+      arr[j] = temp
+    }
+    return arr
   }
 
   render () {
@@ -40,7 +51,6 @@ class Board extends React.Component {
         <div className='column is-6' id='niceMargin'>
           <div className={boardState} id='boardcontainer'>
             {this.state.cells.map((img, i) => <Cell key={i} id={i} img={img}/>)}
-            {this.state.cells.map((img, i) => <Cell key={i} id={i + 8} img={img}/>)}
           </div>
         </div>
         <div className='column is-4'>
