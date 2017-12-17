@@ -3,7 +3,7 @@ const fs = require('fs')
 const { scrape } = require('./scrape')
 const { pokeArr } = require('./pokeArr')
 
-saveMons(0)
+saveMons(150)
 
 function saveMons (idx) {
   fs.readFile(`${__dirname}/pokeLibrary.json`, 'utf8', (err, data) => {
@@ -12,6 +12,7 @@ function saveMons (idx) {
     } else {
       let mons = JSON.parse(data)
       let searchMon = pokeArr[idx]
+      if (!searchMon) return console.log('You are the pokemon master!')
       let findMon = exists(searchMon)
       let pokeAlreadyCaught = mons.find(p => p.includes(findMon))
       if (pokeAlreadyCaught) {
