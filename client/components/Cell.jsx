@@ -14,8 +14,8 @@ class Cell extends React.Component {
     this.checkSolved = this.checkSolved.bind(this)
   }
   // functions go here:
-  cellClick (cell) {
-    this.props.dispatch(addTempCell(cell))
+  cellClick (img, id) {
+    this.props.dispatch(addTempCell(img, id))
     setTimeout(this.checkTemp, 100)
   }
 
@@ -46,14 +46,14 @@ class Cell extends React.Component {
   }
 
   render () {
-    const foundCell = (this.props.temp.find(c => c === this.props.cell) || this.props.solved.find(set => set.find(c => c === this.props.cell)))
+    const foundCell = (this.props.temp.find(c => c.id === this.props.id) || this.props.solved.find(set => set.find(c => c.id === this.props.id)))
     return (
       <div>
-        {!foundCell && <div className='cell' onClick={() => this.cellClick(this.props.cell)}>
+        {!foundCell && <div className='cell' onClick={() => this.cellClick(this.props.img, this.props.id)}>
           <img className ='cellImg' src='/images/pkball.png' />
         </div>}
         {foundCell && <div className='cell' disabled>
-          <img src={this.props.cell.img} />
+          <img src={`https://${this.props.img}`} />
         </div>}
       </div>
     )

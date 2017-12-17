@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Cell from './Cell'
-import { cells } from '../../server/cellData'
+import Info from './Info'
 import pokePics from '../../server/pokeScrape/pokeLibrary.json'
+// import { cells } from '../../server/cellData'
 
 class Board extends React.Component {
   constructor (props) {
@@ -16,16 +17,15 @@ class Board extends React.Component {
   }
   // functions go here:
   componentDidMount () {
-    this.scrumble([])
+    this.scrumble(this.state.cells)
   }
 
   scrumble (arr) {
     let scrambleCells = arr.length > 0 ? arr : []
-    const newPokemon = pokePics.filter(img => !this.state.cells.find(i => i === img))
+    const newPokemon = pokePics.filter(img => !arr.find(i => i === img))
     let idx = Math.floor(Math.random() * newPokemon.length)
     scrambleCells.push(newPokemon[idx])
     if (scrambleCells.length === 8) {
-      console.log(scrambleCells)
       return this.setState({ cells: scrambleCells })
     } else {
       this.scrumble(scrambleCells)
@@ -35,8 +35,18 @@ class Board extends React.Component {
   render () {
     const boardState = this.props.temp.length < 2 ? 'open' : 'closed'
     return (
-      <div className={boardState} id='boardcontainer'>
-        {cells.map((cell, i) => <Cell key={i} cell={cell}/>)}
+      <div className='columns'>
+        <div className='column is-2'></div>
+        <div className='column is-6' id='niceMargin'>
+          <div className={boardState} id='boardcontainer'>
+            {this.state.cells.map((img, i) => <Cell key={i} id={i} img={img}/>)}
+            {this.state.cells.map((img, i) => <Cell key={i} id={i + 8} img={img}/>)}
+          </div>
+        </div>
+        <div className='column is-4'>
+          <Info mix={this.scrumble}/>
+        </div>
+        <div className='column'></div>
       </div>
     )
   }

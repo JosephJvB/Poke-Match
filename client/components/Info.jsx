@@ -13,6 +13,7 @@ class Info extends React.Component {
   }
   // functions go here:
   resetGame () {
+    this.props.mix([])
     this.props.dispatch(reset())
   }
 
