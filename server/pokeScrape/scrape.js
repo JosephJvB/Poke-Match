@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer')
 
 async function scrape (mon) {
-  const browser = await puppeteer.launch({headless: false})
+  const browser = await puppeteer.launch()
   const page = await browser.newPage()
   await page.goto(`https://bulbapedia.bulbagarden.net/wiki/${mon}_(Pok%C3%A9mon)`, {waitUntil: 'domcontentloaded'})
 
@@ -16,7 +16,3 @@ async function scrape (mon) {
 }
 
 module.exports = { scrape }
-
-// mostly works but annoying ad means I have to click it, OR maybe I can automate that too.
-// await page.waitForSelector('#cnxpl-overlay')
-// await page.click('#cnxpl-overlay')
