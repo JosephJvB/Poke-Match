@@ -14,7 +14,7 @@ function saveMons (idx) {
       let searchMon = pokeArr[idx]
       let pokeAlreadyCaught = mons.find(p => p.includes(searchMon))
       if (pokeAlreadyCaught) {
-        console.log(searchMon, ' is already caught!')
+        // console.log(searchMon, ' is already caught!')
         return saveMons(idx + 1)
       }
       console.log('gonna catch a ', searchMon)
@@ -25,6 +25,7 @@ function saveMons (idx) {
             if (err) console.log(err)
             else console.log(searchMon, ' was caught!')
           })
+          setTimeout(() => saveMons(idx + 1), 2000)
         })
     }
   })
