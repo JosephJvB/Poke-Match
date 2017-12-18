@@ -41,7 +41,7 @@ class Cell extends React.Component {
 
   checkSolved () {
     if (this.props.solved.length === 8) {
-      this.props.dispatch(win())
+      setTimeout(() => this.props.dispatch(win()), 2300)
       console.log('u win m\'dude')
     }
   }
