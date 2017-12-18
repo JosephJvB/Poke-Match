@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { reset } from '../actions'
 import Cell from './Cell'
 import Info from './Info'
 import pokePics from '../../server/pokeScrape/pokeLibrary.json'
@@ -49,9 +50,12 @@ class Board extends React.Component {
       <div className='columns'>
         <div className='column is-2'></div>
         <div className='column is-6' id='niceMargin'>
-          <div className={boardState} id='boardcontainer'>
+          {!this.props.win && <div className={boardState} id='boardcontainer'>
             {this.state.cells.map((img, i) => <Cell key={i} id={i} img={img}/>)}
-          </div>
+          </div>}
+          {this.props.win && <div className={boardState} id='boardcontainer' onClick={() => this.props.dispatch(reset())}>
+            <img src='/images/pokewin.gif' />
+          </div>}
         </div>
         <div className='column is-4'>
           <Info mix={this.scrumble}/>
@@ -64,6 +68,7 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    win: state.win,
     temp: state.temp
   }
 }
