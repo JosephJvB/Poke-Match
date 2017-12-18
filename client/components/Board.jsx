@@ -15,6 +15,7 @@ class Board extends React.Component {
     // binds go here:
     this.scrumble = this.scrumble.bind(this)
     this.spinThat = this.spinThat.bind(this)
+    this.resetGame = this.resetGame.bind(this)
   }
   // functions go here:
   componentDidMount () {
@@ -44,6 +45,11 @@ class Board extends React.Component {
     return arr
   }
 
+  resetGame () {
+    this.props.dispatch(reset())
+    this.scrumble([])
+  }
+
   render () {
     const boardState = this.props.temp.length < 2 ? 'open' : 'closed'
     return (
@@ -53,7 +59,7 @@ class Board extends React.Component {
           {!this.props.win && <div className={boardState} id='boardcontainer'>
             {this.state.cells.map((img, i) => <Cell key={i} id={i} img={img}/>)}
           </div>}
-          {this.props.win && <div className={boardState} id='boardcontainer' onClick={() => this.props.dispatch(reset())}>
+          {this.props.win && <div className={boardState} id='boardcontainer' onClick={this.resetGame}>
             <img src='/images/pokewin.gif' />
           </div>}
         </div>
