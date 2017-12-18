@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addTempCell, solvePair, clearTemp, addCount, checkPair } from '../actions'
+import { addTempCell, solvePair, clearTemp, addCount, checkPair, win } from '../actions'
 
 class Cell extends React.Component {
   constructor (props) {
@@ -41,6 +41,7 @@ class Cell extends React.Component {
 
   checkSolved () {
     if (this.props.solved.length === 8) {
+      this.props.dispatch(win())
       console.log('u win m\'dude')
     }
   }

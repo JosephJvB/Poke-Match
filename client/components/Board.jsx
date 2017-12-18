@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { reset } from '../actions'
 import Cell from './Cell'
 import Info from './Info'
 import pokePics from '../../server/pokeScrape/pokeLibrary.json'
@@ -14,6 +15,7 @@ class Board extends React.Component {
     // binds go here:
     this.scrumble = this.scrumble.bind(this)
     this.spinThat = this.spinThat.bind(this)
+    this.resetGame = this.resetGame.bind(this)
   }
   // functions go here:
   componentDidMount () {
@@ -43,15 +45,23 @@ class Board extends React.Component {
     return arr
   }
 
+  resetGame () {
+    this.props.dispatch(reset())
+    this.scrumble([])
+  }
+
   render () {
     const boardState = this.props.temp.length < 2 ? 'open' : 'closed'
     return (
       <div className='columns'>
         <div className='column is-2'></div>
         <div className='column is-6' id='niceMargin'>
-          <div className={boardState} id='boardcontainer'>
+          {!this.props.win && <div className={boardState} id='boardcontainer'>
             {this.state.cells.map((img, i) => <Cell key={i} id={i} img={img}/>)}
-          </div>
+          </div>}
+          {this.props.win && <div className={boardState} id='boardcontainer' onClick={this.resetGame}>
+            <img src='/images/pokewin.gif' />
+          </div>}
         </div>
         <div className='column is-4'>
           <Info mix={this.scrumble}/>
@@ -64,6 +74,7 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    win: state.win,
     temp: state.temp
   }
 }

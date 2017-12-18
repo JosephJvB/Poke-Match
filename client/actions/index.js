@@ -4,6 +4,7 @@ export const CLEAR = 'CLEAR'
 export const ADD_COUNT = 'ADD_COUNT'
 export const CHECK_PAIR = 'CHECK_PAIR'
 export const RESET = 'RESET'
+export const WIN = 'WIN'
 
 export const addTempCell = (img, id) => {
   return {
@@ -42,5 +43,11 @@ export const checkPair = (outcome) => {
 export const reset = () => {
   return {
     type: RESET
+  }
+}
+
+export const win = () => {
+  return {
+    type: WIN
   }
 }

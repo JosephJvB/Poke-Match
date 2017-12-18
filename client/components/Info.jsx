@@ -33,9 +33,6 @@ class Info extends React.Component {
           <img src={asheFace} />
         </div>
         <div className='card'>
-          <h1 className='subtitle is-3'>QUOTE GOES HERE</h1>
-        </div>
-        <div className='card'>
           <ul className='has-text-left'>
             <li>Turn Count: {count}</li>
             <li>Poke-Pairs Caught: {mans} / 8</li>
