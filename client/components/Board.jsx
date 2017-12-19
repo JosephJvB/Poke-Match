@@ -66,7 +66,7 @@ class Board extends React.Component {
           {!this.props.win && <div className={boardState} id='boardcontainer'>
             {this.state.cells.map((img, i) => <Cell key={i} id={i} img={img}/>)}
           </div>}
-          {this.props.win && <div className={boardState} id='boardcontainer' onClick={this.resetGame(this.props.gen)}>
+          {this.props.win && <div className={boardState} id='boardcontainer' onClick={() => this.resetGame(this.props.gen)}>
             <img src='/images/pokewin.gif' />
           </div>}
         </div>
