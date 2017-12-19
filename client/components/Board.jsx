@@ -71,7 +71,7 @@ class Board extends React.Component {
           </div>}
         </div>
         <div className='column is-4'>
-          <Info mix={this.scrumble} />
+          <Info reset={this.resetGame} />
         </div>
         <div className='column'></div>
       </div>
