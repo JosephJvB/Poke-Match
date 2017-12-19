@@ -48,9 +48,9 @@ class Board extends React.Component {
     return arr
   }
 
-  resetGame () {
+  resetGame (gen) {
     this.props.dispatch(reset())
-    this.scrumble([], this.props.gen)
+    this.scrumble([], gen)
   }
 
   render () {
@@ -58,15 +58,15 @@ class Board extends React.Component {
     return (
       <div className='columns'>
         <div className='column is-2'>
-          <button onClick={() => this.scrumble([], kantoDex)}>KANTO</button>
-          <button onClick={() => this.scrumble([], johtoDex)}>JOHTO</button>
-          <button onClick={() => this.scrumble([], hoennDex)}>HOENN</button>
+          <button onClick={() => this.resetGame(kantoDex)}>KANTO</button>
+          <button onClick={() => this.resetGame(johtoDex)}>JOHTO</button>
+          <button onClick={() => this.resetGame(hoennDex)}>HOENN</button>
         </div>
         <div className='column is-6' id='niceMargin'>
           {!this.props.win && <div className={boardState} id='boardcontainer'>
             {this.state.cells.map((img, i) => <Cell key={i} id={i} img={img}/>)}
           </div>}
-          {this.props.win && <div className={boardState} id='boardcontainer' onClick={this.resetGame}>
+          {this.props.win && <div className={boardState} id='boardcontainer' onClick={this.resetGame(this.props.gen)}>
             <img src='/images/pokewin.gif' />
           </div>}
         </div>
