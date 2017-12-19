@@ -28,7 +28,6 @@ class Board extends React.Component {
     let idx = Math.floor(Math.random() * newPokemon.length)
     scrambleCells.push(newPokemon[idx])
     if (scrambleCells.length === 8) {
-      // dispatch scrambleCells here
       let full = scrambleCells.concat(scrambleCells)
       return this.setState({ cells: this.spinThat(full) })
     } else {
