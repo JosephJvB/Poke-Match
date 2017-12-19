@@ -1,21 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { reset } from '../actions'
-
 class Info extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
     }
     // binds go here:
-    this.resetGame = this.resetGame.bind(this)
   }
   // functions go here:
-  resetGame () {
-    this.props.mix([])
-    this.props.dispatch(reset())
-  }
 
   render () {
     let asheFace = '/images/wPoke.png'
@@ -38,7 +31,7 @@ class Info extends React.Component {
             <li>Poke-Pairs Caught: {mans} / 8</li>
           </ul>
         </div>
-        <button className='button is-danger is-large' onClick={this.resetGame}>RESET</button>
+        <button className='button is-danger is-large' onClick={() => this.props.reset(this.props.gen)}>RESET</button>
       </section>
     )
   }
@@ -46,6 +39,7 @@ class Info extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    gen: state.gen,
     check: state.check,
     count: state.count,
     solved: state.solved,
