@@ -5,6 +5,7 @@ export const ADD_COUNT = 'ADD_COUNT'
 export const CHECK_PAIR = 'CHECK_PAIR'
 export const RESET = 'RESET'
 export const WIN = 'WIN'
+export const SAVE_GEN = 'SAVE_GEN'
 
 export const addTempCell = (img, id) => {
   return {
@@ -49,5 +50,12 @@ export const reset = () => {
 export const win = () => {
   return {
     type: WIN
+  }
+}
+
+export const saveGen = (mons) => {
+  return {
+    type: SAVE_GEN,
+    mons
   }
 }

@@ -13,7 +13,7 @@ class Info extends React.Component {
   }
   // functions go here:
   resetGame () {
-    this.props.mix([])
+    this.props.mix([], this.props.gen)
     this.props.dispatch(reset())
   }
 
@@ -46,6 +46,7 @@ class Info extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    gen: state.gen,
     check: state.check,
     count: state.count,
     solved: state.solved,
