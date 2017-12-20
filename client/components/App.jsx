@@ -7,6 +7,7 @@ const App = () => {
   return (
     <div className='app-container'>
       <Header />
+      <hr />
       <Board />
     </div>
   )

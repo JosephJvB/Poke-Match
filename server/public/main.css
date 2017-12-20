@@ -8,6 +8,20 @@
   margin-right: -150px;
 }
 
+#gens {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gen {
+  height: 100px;
+  width: 230px;
+}
+
+#genBut {
+  margin-left: 50px
+}
+
 #boardcontainer {
   display: flex;
   flex-wrap: wrap;
@@ -26,4 +40,8 @@
 
 #info {
   margin-top: -50px
+}
+
+#header {
+  margin-top: 30px
 }
