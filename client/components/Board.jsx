@@ -66,9 +66,10 @@ class Board extends React.Component {
           {!this.props.win && <div className={boardState} id='boardcontainer'>
             {this.state.cells.map((img, i) => <Cell key={i} id={i} img={img}/>)}
           </div>}
-          {this.props.win && <div className={boardState} id='boardcontainer' onClick={() => this.resetGame(this.props.gen)}>
+          {this.props.win && <div id='boardcontainer' onClick={() => this.resetGame(this.props.gen)}>
             <img src='/images/pokewin.gif' />
           </div>}
+          {this.props.HoF.length > 0 && this.props.HoF.map((mon, i) => <img key={i} src={`https://${mon}`}/>)}
         </div>
         <div className='column is-4'>
           <Info reset={this.resetGame} />
@@ -81,6 +82,7 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    HoF: state.HoF,
     gen: state.gen,
     win: state.win,
     temp: state.temp
