@@ -69,7 +69,6 @@ class Board extends React.Component {
           {this.props.win && <div id='boardcontainer' onClick={() => this.resetGame(this.props.gen)}>
             <img src='/images/pokewin.gif' />
           </div>}
-          {this.props.HoF.length > 0 && this.props.HoF.map((mon, i) => <img key={i} src={`https://${mon}`}/>)}
         </div>
         <div className='column is-4'>
           <Info reset={this.resetGame} />
