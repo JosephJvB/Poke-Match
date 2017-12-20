@@ -12,7 +12,7 @@ class Header extends React.Component {
   }
   render () {
     return (
-      <div className='has-text-centered'>
+      <div className='has-text-centered' id='header'>
         {!this.props.HoF.length > 0 && <h1 className='title is-1'>Poke-Match!</h1>}
         {this.props.HoF.length > 0 && <HallOfFame HoF={this.props.HoF}/>}
       </div>
