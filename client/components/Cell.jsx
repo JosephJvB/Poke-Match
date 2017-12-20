@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addTempCell, solvePair, clearTemp, addCount, checkPair, win } from '../actions'
+import { addTempCell, solvePair, clearTemp, addCount, checkPair, win, saveHoF } from '../actions'
 
 class Cell extends React.Component {
   constructor (props) {
@@ -40,7 +40,9 @@ class Cell extends React.Component {
   }
 
   checkSolved () {
+    const HoF = this.props.solved.map(pair => pair[0].img)
     if (this.props.solved.length === 8) {
+      this.props.dispatch(saveHoF(HoF))
       setTimeout(() => this.props.dispatch(win()), 2300)
       console.log('u win m\'dude')
     }
