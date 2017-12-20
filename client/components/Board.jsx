@@ -25,15 +25,14 @@ class Board extends React.Component {
 
   scrumble (arr, mons) {
     this.props.dispatch(saveGen(mons))
-    let scrambleCells = arr.length > 0 ? arr : []
     const newPokemon = mons.filter(img => !arr.find(i => i === img))
     let idx = Math.floor(Math.random() * newPokemon.length)
-    scrambleCells.push(newPokemon[idx])
-    if (scrambleCells.length === 8) {
-      let full = scrambleCells.concat(scrambleCells)
+    arr.push(newPokemon[idx])
+    if (arr.length === 8) {
+      let full = arr.concat(arr)
       return this.setState({ cells: this.spinThat(full) })
     } else {
-      this.scrumble(scrambleCells, mons)
+      this.scrumble(arr, mons)
     }
   }
 
@@ -76,7 +75,6 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    HoF: state.HoF,
     gen: state.gen,
     win: state.win,
     temp: state.temp
