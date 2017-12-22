@@ -1,3 +1,5 @@
+// 14 TESTS
+
 import checkReducer from '../client/reducers/check'
 import countReducer from '../client/reducers/count'
 import genReducer from '../client/reducers/gen'
@@ -6,7 +8,7 @@ import solvedReducer from '../client/reducers/solved'
 import tempReducer from '../client/reducers/temp'
 import winReducer from '../client/reducers/win'
 
-import { ADD_CELL, SOLVED_PAIR, CLEAR, ADD_COUNT, CHECK_PAIR, RESET, WIN, SAVE_GEN, SAVE_HOF, addCell, solvedPair, clear, addCount, checkPair, reset, win, saveGen, saveHoF } from '../client/actions'
+import { ADD_CELL, SOLVED_PAIR, CLEAR, ADD_COUNT, CHECK_PAIR, RESET, WIN, SAVE_GEN, SAVE_HOF } from '../client/actions'
 
 test('checkReducer returns outcome on check', () => {
   const initialState = 'no chance'
@@ -41,6 +43,7 @@ test('genReducer returns monsArray on save', () => {
   const action = { type: SAVE_GEN, mons: ['pikachu', 'james bond', 'barak obama'] }
   const newState = genReducer(initialState, action)
   expect(newState.length).toBe(3)
+  expect(newState).toEqual(['pikachu', 'james bond', 'barak obama'])
 })
 
 test('HoF reducer returns monsArray on save', () => {
@@ -48,6 +51,7 @@ test('HoF reducer returns monsArray on save', () => {
   const action = { type: SAVE_HOF, mons: ['pikachu', 'james bond', 'barak obama'] }
   const newState = HoFReducer(initialState, action)
   expect(newState.length).toBe(3)
+  expect(newState).toEqual(['pikachu', 'james bond', 'barak obama'])
 })
 
 test('HoF reducer clears on reset', () => {
@@ -63,6 +67,7 @@ test('solved reducer returns array with multiple items', () => {
   const newState = solvedReducer(initialState, action)
   expect(newState[0].length).toBe(3)
   expect(newState[1].length).toBe(2)
+  expect(newState).toEqual([['pikachu', 'james bond', 'barak obama'], ['sam', 'joe']])
 })
 
 test('solved reducer clears on reset', () => {
@@ -76,6 +81,7 @@ test('temp reducer returns array with multiple items', () => {
   const initialState = [{ brother: 'sam', me: 'joe' }]
   const action = { type: ADD_CELL, cell: { mum: 'barbara', dad: 'gerard' } }
   const newState = tempReducer(initialState, action)
+  expect(newState.length).toBe(2)
   expect(newState).toEqual([{ brother: 'sam', me: 'joe' }, { mum: 'barbara', dad: 'gerard' }])
 })
 

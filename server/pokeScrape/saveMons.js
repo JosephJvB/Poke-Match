@@ -15,13 +15,11 @@ function saveMons (idx) {
       if (!searchMon) return console.log('You are the pokemon master!')
       let findMon = exists(searchMon)
       let pokeAlreadyCaught = mons.find(p => p.includes(findMon))
-      if (pokeAlreadyCaught) {
-        return saveMons(idx + 1)
-      }
+      if (pokeAlreadyCaught) return saveMons(idx + 1)
       console.log('-------')
       console.log('gonna catch a ', searchMon)
       scrape(searchMon)
-        .then(res => {
+        .then(res => { // WHY DOES THIS .then() WORK LOL
           mons.push(res)
           fs.writeFile(`${__dirname}/pokeLibrary/hoennDex.json`, JSON.stringify(mons), (err) => {
             if (err) console.log(err)
