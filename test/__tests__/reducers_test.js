@@ -1,14 +1,14 @@
 // 14 TESTS
 
-import checkReducer from '../client/reducers/check'
-import countReducer from '../client/reducers/count'
-import genReducer from '../client/reducers/gen'
-import HoFReducer from '../client/reducers/HoF'
-import solvedReducer from '../client/reducers/solved'
-import tempReducer from '../client/reducers/temp'
-import winReducer from '../client/reducers/win'
+import checkReducer from '../../client/reducers/check'
+import countReducer from '../../client/reducers/count'
+import genReducer from '../../client/reducers/gen'
+import HoFReducer from '../../client/reducers/HoF'
+import solvedReducer from '../../client/reducers/solved'
+import tempReducer from '../../client/reducers/temp'
+import winReducer from '../../client/reducers/win'
 
-import { ADD_CELL, SOLVED_PAIR, CLEAR, ADD_COUNT, CHECK_PAIR, RESET, WIN, SAVE_GEN, SAVE_HOF } from '../client/actions'
+import { ADD_CELL, SOLVED_PAIR, CLEAR, ADD_COUNT, CHECK_PAIR, RESET, WIN, SAVE_GEN, SAVE_HOF } from '../../client/actions'
 
 test('checkReducer returns outcome on check', () => {
   const initialState = 'no chance'
@@ -25,10 +25,10 @@ test('checkReducer clears on reset', () => {
 })
 
 test('countReducer returns count on addCount', () => {
-  const initialState = 4
-  const action = { type: ADD_COUNT }
+  const initialState = 0
+  const action = { type: ADD_COUNT, count: 1 }
   const newState = countReducer(initialState, action)
-  expect(newState).toBe(4)
+  expect(newState).toBe(1)
 })
 
 test('countReducer clears on reset', () => {
@@ -58,11 +58,11 @@ test('HoF reducer clears on reset', () => {
   const initialState = ['pikachu', 'james bond', 'barak obama']
   const action = { type: RESET }
   const newState = HoFReducer(initialState, action)
-  expect(newState).toBe([])
+  expect(newState).toEqual([])
 })
 
 test('solved reducer returns array with multiple items', () => {
-  const initialState = ['pikachu', 'james bond', 'barak obama']
+  const initialState = [['pikachu', 'james bond', 'barak obama']]
   const action = { type: SOLVED_PAIR, pair: ['sam', 'joe'] }
   const newState = solvedReducer(initialState, action)
   expect(newState[0].length).toBe(3)
@@ -74,7 +74,7 @@ test('solved reducer clears on reset', () => {
   const initialState = [['pikachu', 'james bond', 'barak obama'], ['sam', 'joe']]
   const action = { type: RESET }
   const newState = solvedReducer(initialState, action)
-  expect(newState).toBe([])
+  expect(newState).toEqual([])
 })
 
 test('temp reducer returns array with multiple items', () => {
@@ -89,14 +89,14 @@ test('temp reducer clears on clear', () => {
   const initialState = [{ brother: 'sam', me: 'joe' }, { mum: 'barbara', dad: 'gerard' }]
   const action = { type: CLEAR }
   const newState = tempReducer(initialState, action)
-  expect(newState).toBe([])
+  expect(newState).toEqual([])
 })
 
 test('temp reducer clears on reset', () => {
   const initialState = [{ brother: 'sam', me: 'joe' }, { mum: 'barbara', dad: 'gerard' }]
   const action = { type: RESET }
   const newState = tempReducer(initialState, action)
-  expect(newState).toBe([])
+  expect(newState).toEqual([])
 })
 
 test('win reducer returns true on win', () => {

@@ -1,16 +1,16 @@
 // 9 TESTS
 
-import { ADD_CELL, SOLVED_PAIR, CLEAR, ADD_COUNT, CHECK_PAIR, RESET, WIN, SAVE_GEN, SAVE_HOF, addCell, solvedPair, clear, addCount, checkPair, reset, win, saveGen, saveHoF } from '../client/actions'
+import { ADD_CELL, SOLVED_PAIR, CLEAR, ADD_COUNT, CHECK_PAIR, RESET, WIN, SAVE_GEN, SAVE_HOF, addTempCell, solvePair, clearTemp, addCount, checkPair, reset, win, saveGen, saveHoF } from '../../client/actions'
 
-test('addCell has the correct shape', () => {
-  const action = addCell('xmas family photo', 4)
+test('addTempCell has the correct shape', () => {
+  const action = addTempCell('xmas family photo', 4)
   expect(action.type).toBe(ADD_CELL)
   expect(action.cell).toEqual({ img: 'xmas family photo', id: 4 })
   expect(action).toEqual({ type: ADD_CELL, cell: { img: 'xmas family photo', id: 4 } })
 })
 
-test('solvedPair has the correct shape', () => {
-  const action = solvedPair(['tweedledumb', 'tweedledee'])
+test('solvePair has the correct shape', () => {
+  const action = solvePair(['tweedledumb', 'tweedledee'])
   expect(action.type).toBe(SOLVED_PAIR)
   expect(action.pair[0]).toBe('tweedledumb')
   expect(action.pair[1]).toBe('tweedledee')
@@ -18,8 +18,8 @@ test('solvedPair has the correct shape', () => {
   expect(action).toEqual({ type: SOLVED_PAIR, pair: ['tweedledumb', 'tweedledee'] })
 })
 
-test('clear has the correct type', () => {
-  const action = clear()
+test('clearTemp has the correct type', () => {
+  const action = clearTemp()
   expect(action.type).toBe(CLEAR)
   expect(action).toEqual({ type: CLEAR })
 })

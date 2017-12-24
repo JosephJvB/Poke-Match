@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer')
 
 async function scrape (mon) {
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({ headless: false })
   const page = await browser.newPage()
   await page.goto(`https://bulbapedia.bulbagarden.net/wiki/${mon}_(Pok%C3%A9mon)`, {waitUntil: 'domcontentloaded'})
 

@@ -8,7 +8,8 @@
     "catchem": "node server/pokeScrape/saveMons.js",
     "start": "webpack && node server",
     "dev": "nodemon --watch server & webpack --watch",
-    "test": "tape -r babel-register 'test/**/*.test.js' | tap-diff"
+    "test": "jest",
+    "spook": "codeceptjs run"
   },
   "babel": {
     "presets": [
@@ -19,7 +20,11 @@
   "author": "Definitely Joe",
   "license": "ISC",
   "devDependencies": {
+    "codeceptjs": "^1.1.1",
     "enzyme": "^2.7.0",
+    "jest": "^21.2.1",
+    "nightmare": "^2.10.0",
+    "nightmare-upload": "^0.1.1",
     "puppeteer": "^0.13.0",
     "tap-diff": "^0.1.1",
     "tape": "^4.6.3"

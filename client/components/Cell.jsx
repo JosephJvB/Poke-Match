@@ -52,7 +52,7 @@ class Cell extends React.Component {
     const foundCell = (this.props.temp.find(c => c.id === this.props.id) || this.props.solved.find(set => set.find(c => c.id === this.props.id)))
     return (
       <div>
-        {!foundCell && <div className='cell' onClick={() => this.cellClick(this.props.img, this.props.id)}>
+        {!foundCell && <div id={this.props.id} className='cell' onClick={() => this.cellClick(this.props.img, this.props.id)}>
           <img className ='cellImg' src='/images/pkball.png' />
         </div>}
         {foundCell && <div className='cell' disabled>
