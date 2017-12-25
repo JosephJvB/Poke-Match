@@ -19,7 +19,7 @@ function saveMons (idx) {
       console.log('-------')
       console.log('gonna catch a ', searchMon)
       scrape(searchMon)
-        .then(res => { // WHY DOES THIS .then() WORK LOL
+        .then(res => {
           mons.push(res)
           fs.writeFile(`${__dirname}/pokeLibrary/hoennDex.json`, JSON.stringify(mons), (err) => {
             if (err) console.log(err)
