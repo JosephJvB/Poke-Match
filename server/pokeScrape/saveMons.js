@@ -6,7 +6,7 @@ const { kantoArr, johtoArr, hoennArr } = require('./pokeArr')
 saveMons(0)
 
 function saveMons (idx) {
-  fs.readFile(`${__dirname}/pokeLibrary/hoennDex.json`, 'utf8', (err, data) => {
+  fs.readFile(`${__dirname}/pokeLibrary/test.json`, 'utf8', (err, data) => {
     if (err) {
       console.log(err)
     } else {
@@ -21,7 +21,7 @@ function saveMons (idx) {
       scrape(searchMon)
         .then(res => {
           mons.push(res)
-          fs.writeFile(`${__dirname}/pokeLibrary/hoennDex.json`, JSON.stringify(mons), (err) => {
+          fs.writeFile(`${__dirname}/pokeLibrary/test.json`, JSON.stringify(mons), (err) => {
             if (err) console.log(err)
             else console.log(searchMon, ' was caught!')
           })

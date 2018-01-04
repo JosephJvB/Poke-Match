@@ -5,6 +5,7 @@
   "repository": "https://github.com/JosephJvB/testplate.git",
   "main": "server/index.js",
   "scripts": {
+    "la": "node server/pokeScrape/scrape",
     "catchem": "node server/pokeScrape/saveMons.js",
     "start": "webpack && node server",
     "dev": "nodemon --watch server & webpack --watch",
@@ -42,6 +43,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.6",
+    "react-snowfetti": "^1.2.4",
     "react-sound": "^0.10.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
